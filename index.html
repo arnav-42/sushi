@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sushi Roll Expected Pieces Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            text-align: center;
+            margin: 0;
+            padding: 2rem;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        input, button {
+            font-size: 1.2rem;
+            padding: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Sushi Roll Expected Pieces Calculator 🍣</h1>
+    <p>Enter the number of sushi rolls you have:</p>
+    <input type="number" id="rolls" placeholder="Enter number of rolls" min="0">
+    <br>
+    <button onclick="calculate()">Calculate</button>
+
+    <div class="result" id="result"></div>
+
+    <script>
+        function calculate() {
+            const rolls = parseFloat(document.getElementById("rolls").value);
+            if (isNaN(rolls) || rolls < 0) {
+                document.getElementById("result").innerText = "Please enter a valid number of rolls.";
+                return;
+            }
+
+            // Probabilities and outcomes
+            const probabilities = [
+                { pieces: 1, probability: 0.5833 },
+                { pieces: 2, probability: 0.3667 },
+                { pieces: 4, probability: 0.0333 },
+                { pieces: 8, probability: 0.0167 }
+            ];
+
+            // Calculate expected pieces per roll
+            let expectedPerRoll = 0;
+            probabilities.forEach(item => {
+                expectedPerRoll += item.pieces * item.probability;
+            });
+
+            const expectedTotal = expectedPerRoll * rolls;
+            document.getElementById("result").innerText = `Expected number of sushi pieces: ${expectedTotal.toFixed(2)}`;
+        }
+    </script>
+
+</body>
+</html>
