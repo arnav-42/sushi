@@ -1,5 +1,5 @@
 # sushi
-A very simple (static) EV calculator for the Brawlstars sushi event.
+A very simple (static) expected value calculator.
 
 Link: https://arnav-42.github.io/sushi/
 
